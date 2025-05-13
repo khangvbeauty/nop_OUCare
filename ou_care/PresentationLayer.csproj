@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36628A62-4B9D-4A7D-97D6-F0F3DB3D424B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ou_care</RootNamespace>
+    <AssemblyName>ou_care</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=7.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.7.7.1\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=7.7.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.7.7.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=7.7.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.System.Drawing.7.7.0\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.6.0.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.6.0\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="zxing, Version=0.16.10.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.10\lib\net47\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.10.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.10\lib\net47\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChatBot\ChatBot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatBot\ChatBot.Designer.cs" />
+    <Compile Include="ChatBot\SymptomChecker.cs" />
+    <Compile Include="ChatBot\SymptomCheckerHelpers.cs" />
+    <Compile Include="ChucNangAdmin\ActivityLog_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\ActivityLog_UC.Designer.cs">
+      <DependentUpon>ActivityLog_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\ViewUser_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\ViewUser_UC.Designer.cs">
+      <DependentUpon>ViewUser_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Dashboard_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Dashboard_UC.Designer.cs">
+      <DependentUpon>Dashboard_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Edit_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Edit_UC.Designer.cs">
+      <DependentUpon>Edit_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\LogDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\LogDetailForm.Designer.cs">
+      <DependentUpon>LogDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Profile_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Profile_UC.Designer.cs">
+      <DependentUpon>Profile_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Revenue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\Revenue.Designer.cs">
+      <DependentUpon>Revenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangAdmin\AddUser_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangAdmin\AddUser_UC.Designer.cs">
+      <DependentUpon>AddUser_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_BanThuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_BanThuoc.Designer.cs">
+      <DependentUpon>UC_NV_BanThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_KiemTraThuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_KiemTraThuoc.Designer.cs">
+      <DependentUpon>UC_NV_KiemTraThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_QuanLyHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_QuanLyHoaDon.Designer.cs">
+      <DependentUpon>UC_NV_QuanLyHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_QuanLyKH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_QuanLyKH.Designer.cs">
+      <DependentUpon>UC_NV_QuanLyKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_SuaThuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_SuaThuoc.Designer.cs">
+      <DependentUpon>UC_NV_SuaThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_ThemThuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_ThemThuoc.Designer.cs">
+      <DependentUpon>UC_NV_ThemThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_TongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_TongQuan.Designer.cs">
+      <DependentUpon>UC_NV_TongQuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_XemThuoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChucNangNhanVien\UC_NV_XemThuoc.Designer.cs">
+      <DependentUpon>UC_NV_XemThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien.Designer.cs">
+      <DependentUpon>NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuenMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuenMK.Designer.cs">
+      <DependentUpon>QuenMK.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatBot\ChatBot.resx" />
+    <EmbeddedResource Include="ChucNangAdmin\ActivityLog_UC.resx">
+      <DependentUpon>ActivityLog_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\ViewUser_UC.resx">
+      <DependentUpon>ViewUser_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\Dashboard_UC.resx">
+      <DependentUpon>Dashboard_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\Edit_UC.resx">
+      <DependentUpon>Edit_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\LogDetailForm.resx">
+      <DependentUpon>LogDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\Profile_UC.resx">
+      <DependentUpon>Profile_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\Revenue.resx">
+      <DependentUpon>Revenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangAdmin\AddUser_UC.resx">
+      <DependentUpon>AddUser_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_BanThuoc.resx">
+      <DependentUpon>UC_NV_BanThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_KiemTraThuoc.resx">
+      <DependentUpon>UC_NV_KiemTraThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_QuanLyHoaDon.resx">
+      <DependentUpon>UC_NV_QuanLyHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_QuanLyKH.resx">
+      <DependentUpon>UC_NV_QuanLyKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_SuaThuoc.resx">
+      <DependentUpon>UC_NV_SuaThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_ThemThuoc.resx">
+      <DependentUpon>UC_NV_ThemThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_TongQuan.resx">
+      <DependentUpon>UC_NV_TongQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChucNangNhanVien\UC_NV_XemThuoc.resx">
+      <DependentUpon>UC_NV_XemThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien.resx">
+      <DependentUpon>NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="ChatBot\ChanDoan.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="QuenMK.resx">
+      <DependentUpon>QuenMK.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{aae7b967-ee3b-4ee3-86f3-f71bfeff84d0}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{0946d7e5-5e16-48ba-8c43-98beed7da5d8}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransferObject\TransferObject.csproj">
+      <Project>{2d14d6fd-8b44-4e2a-9ae2-bc9f37becbb3}</Project>
+      <Name>TransferObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1401811766-612x612-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1401811766-612x612-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

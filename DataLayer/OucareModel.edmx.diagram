@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="274b68540869466b986f788b5ac58da6" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="OUCareModel.Bill" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.BillDetail" Width="2.875" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.Customer" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.Log" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.Medicine" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.MedicineBatch" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.MedicineBatchDetail" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.MedicineGroup" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.Notification" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.Role" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OUCareModel.User" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="OUCareModel.FK__Bill__cusID__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__Bill__userID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__BillDetai__billI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__BillDetai__medID__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__Notificat__cusID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__Log__userID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__Medicine__groupI__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__MedicineB__medID__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__MedicineB__batch__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="OUCareModel.FK__Users__roleID__3B75D760" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OUCareModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
