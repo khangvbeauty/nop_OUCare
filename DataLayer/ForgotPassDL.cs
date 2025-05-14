@@ -27,6 +27,12 @@ namespace DataLayer
                         return false;
                     }
 
+                    if (user.roleID == 1)
+                    {
+                        errorMessage = "Email không hợp lệ.";
+                        return false;
+                    }
+
                     // Kiểm tra tần suất yêu cầu
                     //var lastReset = context.Logs
                     //    .Where(l => l.userID == user.ID && l.action == "Đặt lại mật khẩu")

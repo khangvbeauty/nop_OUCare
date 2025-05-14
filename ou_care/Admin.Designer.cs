@@ -33,6 +33,7 @@
             this.btnRevenue = new System.Windows.Forms.Button();
             this.btnTheoDoiLog = new System.Windows.Forms.Button();
             this.lb2 = new System.Windows.Forms.Label();
+            this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnViewUser = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo39_Khanh)).BeginInit();
             this.SuspendLayout();
@@ -101,6 +101,16 @@
             this.lb2.Size = new System.Drawing.Size(202, 35);
             this.lb2.TabIndex = 9;
             this.lb2.Text = "OUCare System";
+            // 
+            // picLogo39_Khanh
+            // 
+            this.picLogo39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picLogo39_Khanh.Image")));
+            this.picLogo39_Khanh.Location = new System.Drawing.Point(37, 12);
+            this.picLogo39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo39_Khanh.Name = "picLogo39_Khanh";
+            this.picLogo39_Khanh.Size = new System.Drawing.Size(195, 135);
+            this.picLogo39_Khanh.TabIndex = 11;
+            this.picLogo39_Khanh.TabStop = false;
             // 
             // btnLogout
             // 
@@ -177,16 +187,6 @@
             this.panelMain.Size = new System.Drawing.Size(947, 736);
             this.panelMain.TabIndex = 3;
             // 
-            // picLogo39_Khanh
-            // 
-            this.picLogo39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picLogo39_Khanh.Image")));
-            this.picLogo39_Khanh.Location = new System.Drawing.Point(37, 12);
-            this.picLogo39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picLogo39_Khanh.Name = "picLogo39_Khanh";
-            this.picLogo39_Khanh.Size = new System.Drawing.Size(195, 135);
-            this.picLogo39_Khanh.TabIndex = 11;
-            this.picLogo39_Khanh.TabStop = false;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -196,6 +196,7 @@
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Admin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

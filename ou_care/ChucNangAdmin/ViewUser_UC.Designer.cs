@@ -72,6 +72,7 @@
             this.dgvViewUser.RowTemplate.Height = 24;
             this.dgvViewUser.Size = new System.Drawing.Size(903, 445);
             this.dgvViewUser.TabIndex = 29;
+            this.dgvViewUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewUser_CellContentClick);
             // 
             // txtSearch
             // 

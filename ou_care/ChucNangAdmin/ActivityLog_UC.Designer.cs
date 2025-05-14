@@ -53,9 +53,9 @@
             this.label3.ForeColor = System.Drawing.Color.Navy;
             this.label3.Location = new System.Drawing.Point(748, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 20);
+            this.label3.Size = new System.Drawing.Size(51, 25);
             this.label3.TabIndex = 65;
-            this.label3.Text = "Tài khoản";
+            this.label3.Text = "Loại";
             // 
             // label2
             // 
@@ -77,9 +77,9 @@
             this.label3_39_Khanh.ForeColor = System.Drawing.Color.Navy;
             this.label3_39_Khanh.Location = new System.Drawing.Point(412, 107);
             this.label3_39_Khanh.Name = "label3_39_Khanh";
-            this.label3_39_Khanh.Size = new System.Drawing.Size(81, 20);
+            this.label3_39_Khanh.Size = new System.Drawing.Size(113, 25);
             this.label3_39_Khanh.TabIndex = 63;
-            this.label3_39_Khanh.Text = "Tài khoản";
+            this.label3_39_Khanh.Text = "Hành động";
             // 
             // label1
             // 

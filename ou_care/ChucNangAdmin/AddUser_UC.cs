@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,6 +36,13 @@ namespace ou_care.ChucNangAdmin
             cbbUserRole.Items.Add(2);
         }
 
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
+
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (Global.CurrentUser == null)
@@ -55,6 +63,13 @@ namespace ou_care.ChucNangAdmin
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                return;
+            }
+
+            // Kiểm tra email
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Email không đúng định dạng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

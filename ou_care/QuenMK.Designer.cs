@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuenMK));
             this.panel1_39_Khanh = new System.Windows.Forms.Panel();
+            this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
             this.lb1 = new System.Windows.Forms.Label();
             this.lb2 = new System.Windows.Forms.Label();
             this.btExit = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3_39_Khanh = new System.Windows.Forms.Label();
-            this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
             this.picPass_39_Khanh = new System.Windows.Forms.PictureBox();
             this.panel1_39_Khanh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo39_Khanh)).BeginInit();
@@ -56,6 +56,16 @@
             this.panel1_39_Khanh.Name = "panel1_39_Khanh";
             this.panel1_39_Khanh.Size = new System.Drawing.Size(293, 527);
             this.panel1_39_Khanh.TabIndex = 26;
+            // 
+            // picLogo39_Khanh
+            // 
+            this.picLogo39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picLogo39_Khanh.Image")));
+            this.picLogo39_Khanh.Location = new System.Drawing.Point(35, 196);
+            this.picLogo39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo39_Khanh.Name = "picLogo39_Khanh";
+            this.picLogo39_Khanh.Size = new System.Drawing.Size(175, 164);
+            this.picLogo39_Khanh.TabIndex = 10;
+            this.picLogo39_Khanh.TabStop = false;
             // 
             // lb1
             // 
@@ -143,16 +153,6 @@
             this.label3_39_Khanh.TabIndex = 27;
             this.label3_39_Khanh.Text = "Quên mật khẩu";
             // 
-            // picLogo39_Khanh
-            // 
-            this.picLogo39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picLogo39_Khanh.Image")));
-            this.picLogo39_Khanh.Location = new System.Drawing.Point(35, 196);
-            this.picLogo39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picLogo39_Khanh.Name = "picLogo39_Khanh";
-            this.picLogo39_Khanh.Size = new System.Drawing.Size(175, 164);
-            this.picLogo39_Khanh.TabIndex = 10;
-            this.picLogo39_Khanh.TabStop = false;
-            // 
             // picPass_39_Khanh
             // 
             this.picPass_39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picPass_39_Khanh.Image")));
@@ -177,6 +177,7 @@
             this.Controls.Add(this.label3_39_Khanh);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "QuenMK";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuenMK";
             this.panel1_39_Khanh.ResumeLayout(false);
             this.panel1_39_Khanh.PerformLayout();

@@ -7,9 +7,11 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TransferObject;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace ou_care.ChucNangAdmin
@@ -37,6 +39,8 @@ namespace ou_care.ChucNangAdmin
             {
                 MessageBox.Show("Không tìm thấy thông tin người đăng nhập.");
             }
+
+
         }
         // Hàm tải thông tin profile
         public void LoadProfile(string username)
@@ -65,7 +69,11 @@ namespace ou_care.ChucNangAdmin
                 MessageBox.Show("Lỗi khi tải thông tin profile: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -79,6 +87,19 @@ namespace ou_care.ChucNangAdmin
                 if (!hasChanges)
                 {
                     MessageBox.Show("Không có thay đổi nào được thực hiện.");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtEmail.Text))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+
+                // Kiểm tra email
+                if (!IsValidEmail(txtEmail.Text))
+                {
+                    MessageBox.Show("Email không đúng định dạng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

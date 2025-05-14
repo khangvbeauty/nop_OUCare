@@ -23,10 +23,15 @@ namespace DataLayer
             }).ToList();
         }
 
-        public void Add(CustomerDTO dto)
+        public int Add(CustomerDTO dto)
         {
+            var existing = db.Customers.FirstOrDefault(c => c.phone == dto.Phone);
+            if (existing != null)
+                throw new Exception("Số điện thoại này đã tồn tại!");
+
             var customer = new Customer
             {
+                ID = dto.ID,
                 name = dto.Name,
                 phone = dto.Phone,
                 email = dto.Email,
@@ -34,6 +39,7 @@ namespace DataLayer
             };
             db.Customers.Add(customer);
             db.SaveChanges();
+            return customer.ID;
         }
 
 

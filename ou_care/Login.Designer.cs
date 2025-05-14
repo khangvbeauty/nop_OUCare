@@ -38,19 +38,20 @@
             this.label6_39_Khanh = new System.Windows.Forms.Label();
             this.label5_39_Khanh = new System.Windows.Forms.Label();
             this.label4_39_Khanh = new System.Windows.Forms.Label();
+            this.picPass_39_Khanh = new System.Windows.Forms.PictureBox();
+            this.picUser_39_Khanh = new System.Windows.Forms.PictureBox();
             this.label3_39_Khanh = new System.Windows.Forms.Label();
             this.btExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lb1 = new System.Windows.Forms.Label();
             this.lb2 = new System.Windows.Forms.Label();
             this.panel1_39_Khanh = new System.Windows.Forms.Panel();
-            this.picPass_39_Khanh = new System.Windows.Forms.PictureBox();
-            this.picUser_39_Khanh = new System.Windows.Forms.PictureBox();
             this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2_39_Khanh.SuspendLayout();
-            this.panel1_39_Khanh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass_39_Khanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUser_39_Khanh)).BeginInit();
+            this.panel1_39_Khanh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo39_Khanh)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,10 +88,12 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(331, 35);
             this.txtUsername.TabIndex = 19;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // panel2_39_Khanh
             // 
             this.panel2_39_Khanh.BackColor = System.Drawing.Color.Transparent;
+            this.panel2_39_Khanh.Controls.Add(this.button1);
             this.panel2_39_Khanh.Controls.Add(this.txtPw);
             this.panel2_39_Khanh.Controls.Add(this.lbQuenMK);
             this.panel2_39_Khanh.Controls.Add(this.txtUsername);
@@ -171,6 +174,27 @@
             this.label4_39_Khanh.TabIndex = 13;
             this.label4_39_Khanh.Text = "Support:";
             // 
+            // picPass_39_Khanh
+            // 
+            this.picPass_39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picPass_39_Khanh.Image")));
+            this.picPass_39_Khanh.Location = new System.Drawing.Point(18, 255);
+            this.picPass_39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picPass_39_Khanh.Name = "picPass_39_Khanh";
+            this.picPass_39_Khanh.Size = new System.Drawing.Size(63, 43);
+            this.picPass_39_Khanh.TabIndex = 12;
+            this.picPass_39_Khanh.TabStop = false;
+            // 
+            // picUser_39_Khanh
+            // 
+            this.picUser_39_Khanh.BackColor = System.Drawing.Color.Transparent;
+            this.picUser_39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picUser_39_Khanh.Image")));
+            this.picUser_39_Khanh.Location = new System.Drawing.Point(18, 195);
+            this.picUser_39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picUser_39_Khanh.Name = "picUser_39_Khanh";
+            this.picUser_39_Khanh.Size = new System.Drawing.Size(63, 34);
+            this.picUser_39_Khanh.TabIndex = 11;
+            this.picUser_39_Khanh.TabStop = false;
+            // 
             // label3_39_Khanh
             // 
             this.label3_39_Khanh.AutoSize = true;
@@ -248,27 +272,6 @@
             this.panel1_39_Khanh.Size = new System.Drawing.Size(293, 527);
             this.panel1_39_Khanh.TabIndex = 21;
             // 
-            // picPass_39_Khanh
-            // 
-            this.picPass_39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picPass_39_Khanh.Image")));
-            this.picPass_39_Khanh.Location = new System.Drawing.Point(18, 255);
-            this.picPass_39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picPass_39_Khanh.Name = "picPass_39_Khanh";
-            this.picPass_39_Khanh.Size = new System.Drawing.Size(63, 43);
-            this.picPass_39_Khanh.TabIndex = 12;
-            this.picPass_39_Khanh.TabStop = false;
-            // 
-            // picUser_39_Khanh
-            // 
-            this.picUser_39_Khanh.BackColor = System.Drawing.Color.Transparent;
-            this.picUser_39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picUser_39_Khanh.Image")));
-            this.picUser_39_Khanh.Location = new System.Drawing.Point(18, 195);
-            this.picUser_39_Khanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picUser_39_Khanh.Name = "picUser_39_Khanh";
-            this.picUser_39_Khanh.Size = new System.Drawing.Size(63, 34);
-            this.picUser_39_Khanh.TabIndex = 11;
-            this.picUser_39_Khanh.TabStop = false;
-            // 
             // picLogo39_Khanh
             // 
             this.picLogo39_Khanh.Image = ((System.Drawing.Image)(resources.GetObject("picLogo39_Khanh.Image")));
@@ -278,6 +281,19 @@
             this.picLogo39_Khanh.Size = new System.Drawing.Size(175, 164);
             this.picLogo39_Khanh.TabIndex = 10;
             this.picLogo39_Khanh.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Navy;
+            this.button1.Location = new System.Drawing.Point(396, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 47);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Login
             // 
@@ -293,10 +309,10 @@
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel2_39_Khanh.ResumeLayout(false);
             this.panel2_39_Khanh.PerformLayout();
-            this.panel1_39_Khanh.ResumeLayout(false);
-            this.panel1_39_Khanh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass_39_Khanh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUser_39_Khanh)).EndInit();
+            this.panel1_39_Khanh.ResumeLayout(false);
+            this.panel1_39_Khanh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo39_Khanh)).EndInit();
             this.ResumeLayout(false);
 
@@ -322,5 +338,6 @@
         private System.Windows.Forms.PictureBox picLogo39_Khanh;
         private System.Windows.Forms.Label lb2;
         private System.Windows.Forms.Panel panel1_39_Khanh;
+        private System.Windows.Forms.Button button1;
     }
 }

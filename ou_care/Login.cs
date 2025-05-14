@@ -48,6 +48,11 @@ namespace ou_care
             pass = txtPw.Text;
 
             Acccount account = new Acccount(user, pass);
+            if(string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPw.Text)) 
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin username và password.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
 
             if (isUserLogin(account))
             {
@@ -107,5 +112,11 @@ namespace ou_care
             QuenMK qmk = new QuenMK();
             qmk.Show();
         }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

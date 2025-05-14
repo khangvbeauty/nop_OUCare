@@ -28,7 +28,14 @@ namespace DataLayer
         {
             using (var context = new OUCareDBContext())
             {
-                return context.Users.Any(u => u.userName == username && u.passWord == password && u.isActive == 1);
+                //return context.Users.Any(u => u.userName == username && u.passWord == password && u.isActive == 1);
+                return context.Users
+                    .Where(u => u.isActive == 1)
+                    .AsEnumerable() // chuyển sang xử lý phía client
+                    .Any(u =>
+                        string.Equals(u.userName, username, StringComparison.Ordinal) &&
+                        string.Equals(u.passWord, password, StringComparison.Ordinal));
+
             }
         }
 

@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TransferObject;
@@ -30,6 +31,11 @@ namespace ou_care.ChucNangAdmin
         private void Edit_UC_Load(object sender, EventArgs e)
         {
             LoadUserProfile();
+            int newRole = int.Parse(cmbUserRole.SelectedItem.ToString());
+            if (Global.CurrentUser.ID == newRole)
+            {
+                cmbUserRole.Enabled = false;
+            }
         }
         private void LoadUserProfile()
         {
@@ -60,6 +66,12 @@ namespace ou_care.ChucNangAdmin
             }
         }
 
+        private bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -72,6 +84,24 @@ namespace ou_care.ChucNangAdmin
 
                 // Lấy vai trò từ ComboBox
                 int newRole = int.Parse(cmbUserRole.SelectedItem.ToString());
+
+
+                    
+
+                    if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                    return;
+                }
+
+                // Kiểm tra email
+                if (!IsValidEmail(email))
+                {
+                    MessageBox.Show("Email không đúng định dạng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+               
 
                 // Gọi phương thức UpdateProfile
                 bool success = userService.UpdateProfile(username, name, email, oldPassword, newPassword, newRole);

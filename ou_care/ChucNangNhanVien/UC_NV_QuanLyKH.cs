@@ -15,6 +15,7 @@ namespace ou_care.ChucNangNhanVien
     public partial class UC_NV_QuanLyKH : UserControl
     {
         private CustomerBUS bus = new CustomerBUS();
+        private LogBL logBL = new LogBL();
 
         public UC_NV_QuanLyKH()
         {
@@ -29,24 +30,45 @@ namespace ou_care.ChucNangNhanVien
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            string name = txtName.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            // Kiểm tra bỏ trống
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(phone))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ tên và số điện thoại.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             CustomerDTO dto = new CustomerDTO
             {
-                Name = txtName.Text.Trim(),
-                Phone = txtPhone.Text.Trim(),
-                Email = txtEmail.Text.Trim(),
+                Name = name,
+                Phone = phone,
+                Email = email,
                 CreatedDate = DateTime.Now
             };
-            bus.Them(dto);
-            MessageBox.Show("Thêm khách thành công");
 
-            // nếu quay lại bán thuốc
-            if (NhanVien.QuayLaiBanThuoc != null)
+            try
             {
-                NhanVien.QuayLaiBanThuoc.Invoke();
-                NhanVien.SdtTamThoi = null;
-                NhanVien.QuayLaiBanThuoc = null;
+                // Thêm khách hàng
+                int id = bus.Them(dto);
+                logBL.LogAddCustomer(Global.CurrentUser.ID, id);
+                MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Quay lại giao diện bán thuốc nếu có
+                if (NhanVien.QuayLaiBanThuoc != null)
+                {
+                    NhanVien.QuayLaiBanThuoc.Invoke();
+                    NhanVien.SdtTamThoi = null;
+                    NhanVien.QuayLaiBanThuoc = null;
+                }
+
+                LoadData();
             }
-            LoadData();
+            catch (Exception ex)
+            {
+                // Hiển thị thông báo lỗi nếu trùng số điện thoại
+                MessageBox.Show("Không thể thêm khách hàng.\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -61,6 +83,7 @@ namespace ou_care.ChucNangNhanVien
                     Email = txtEmail.Text.Trim()
                 };
                 bus.CapNhat(dto);
+                logBL.LogUpdateCustomer(Global.CurrentUser.ID, id);
                 LoadData();
             }
         }

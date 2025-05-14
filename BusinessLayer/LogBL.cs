@@ -94,5 +94,15 @@ namespace BusinessLayer
         {
             AddLog(userID, "Đăng xuất", logoutUserID, "User");
         }
+        // Ghi log thêm khách hàng
+        public void LogAddCustomer(int userID, int cusID)
+        {
+            AddLog(userID, "Thêm khách hàng", cusID, "Customer");
+        }
+        // Ghi log sửa khách hàng
+        public void LogUpdateCustomer(int userID, int cusID)
+        {
+            AddLog(userID, "Sửa khách hàng", cusID, "Customer");
+        }
     }
 }

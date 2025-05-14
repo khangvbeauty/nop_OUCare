@@ -326,8 +326,9 @@ namespace ou_care.ChucNangAdmin
             // Xuất dữ liệu log ra Excel hoặc PDF
             SaveFileDialog saveDialog = new SaveFileDialog
             {
-                Filter = "Excel Files (*.xlsx)|*.xlsx|PDF Files (*.pdf)|*.pdf",
-                Title = "Xuất báo cáo nhật ký hoạt động"
+                Filter = "Excel Files (*.xlsx)|*.xlsx",
+                Title = "Xuất báo cáo nhật ký hoạt động",
+                FileName = "BaoCaoNhatKyHoatDong"
             };
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
@@ -335,14 +336,8 @@ namespace ou_care.ChucNangAdmin
                 string filePath = saveDialog.FileName;
                 string extension = System.IO.Path.GetExtension(filePath).ToLower();
 
-                if (extension == ".xlsx")
-                {
-                    ExportToExcel(filePath);
-                }
-                else if (extension == ".pdf")
-                {
-                    ExportToPDF(filePath);
-                }
+                ExportToExcel(filePath);
+   
             }
         }
 
@@ -351,23 +346,17 @@ namespace ou_care.ChucNangAdmin
             // Xuất dữ liệu log ra Excel hoặc PDF
             SaveFileDialog saveDialog = new SaveFileDialog
             {
-                Filter = "Excel Files (*.xlsx)|*.xlsx|PDF Files (*.pdf)|*.pdf",
-                Title = "Xuất báo cáo nhật ký hoạt động"
+                Filter = "PDF Files (*.pdf)|*.pdf",
+                Title = "Xuất báo cáo nhật ký hoạt động",
+                FileName = "BaoCaoNhatKyHoatDong"
             };
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveDialog.FileName;
                 string extension = System.IO.Path.GetExtension(filePath).ToLower();
-
-                if (extension == ".xlsx")
-                {
-                    ExportToExcel(filePath);
-                }
-                else if (extension == ".pdf")
-                {
-                    ExportToPDF(filePath);
-                }
+                ExportToPDF(filePath);
+                
             }
         }
 

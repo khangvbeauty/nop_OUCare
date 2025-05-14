@@ -14,7 +14,7 @@ namespace BusinessLayer
 
         public List<CustomerDTO> LayDanhSach() => dao.GetAll();
 
-        public void Them(CustomerDTO dto) => dao.Add(dto);
+        public int Them(CustomerDTO dto) => dao.Add(dto);
 
         public void CapNhat(CustomerDTO dto) => dao.Update(dto);
 

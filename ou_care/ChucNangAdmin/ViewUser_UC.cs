@@ -30,6 +30,7 @@ namespace ou_care.ChucNangAdmin
         private void ViewUser_UC_Load(object sender, EventArgs e)
         {
             LoadAllUsers();
+            dgvViewUser.Columns["passWord"].Visible = false;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -53,6 +54,15 @@ namespace ou_care.ChucNangAdmin
             {
                 // Lấy ID của người dùng được chọn
                 int userID = Convert.ToInt32(dgvViewUser.SelectedRows[0].Cells["ID"].Value);
+
+                if(Global.CurrentUser.ID == userID)
+                {
+                    MessageBox.Show("Bạn không thể xóa chính mình!",
+                                                    "Thông báo",
+                                                    MessageBoxButtons.OK,
+                                                    MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Hiển thị hộp thoại xác nhận
                 DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa người dùng này?",
@@ -115,6 +125,11 @@ namespace ou_care.ChucNangAdmin
                 MessageBox.Show("Vui lòng chọn người dùng cần chỉnh sửa!", "Thông báo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void dgvViewUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
