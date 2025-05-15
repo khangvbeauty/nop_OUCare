@@ -36,6 +36,7 @@ namespace DataLayer
         public string note { get; set; }
         public Nullable<System.DateTime> nextCheckupDate { get; set; }
         public string preserveInfo { get; set; }
+        public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }

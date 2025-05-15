@@ -179,5 +179,17 @@ namespace ou_care.ChucNangNhanVien
                 videoCaptureDevice.SignalToStop();
             }
         }
+
+        private void dgvMedicines_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvMedicines.SelectedRows.Count > 0)
+            {
+                var selectedRow = dgvMedicines.SelectedRows[0];
+                if (selectedRow.Cells["ID"].Value != null)
+                {
+                    selectedMedicineId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+                }
+            }
+        }
     }
 }

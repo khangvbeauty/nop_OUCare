@@ -88,6 +88,7 @@
             this.dgvMedicines.Size = new System.Drawing.Size(910, 259);
             this.dgvMedicines.TabIndex = 65;
             this.dgvMedicines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMedicines_CellContentClick);
+            this.dgvMedicines.SelectionChanged += new System.EventHandler(this.dgvMedicines_SelectionChanged);
             // 
             // txtSearch
             // 

@@ -115,7 +115,7 @@ namespace ou_care.ChucNangNhanVien
                         Quantity = quantity
                     });
 
-                    double itemTotal = selectedMedicine.price.GetValueOrDefault() * quantity;
+                    double itemTotal = selectedMedicine.priceBan.GetValueOrDefault() * quantity;
                     totalAmount += itemTotal;
                     txtTong.Text = totalAmount.ToString("N0");
 
@@ -162,7 +162,7 @@ namespace ou_care.ChucNangNhanVien
                 {
                     txtMaThuoc.Text = medicine.ID.ToString();
                     txtTenThuoc.Text = medicine.name;
-                    txtDonGia.Text = medicine.price.GetValueOrDefault().ToString("N0");
+                    txtDonGia.Text = medicine.priceBan.GetValueOrDefault().ToString("N0");
                     // Gán hạn sử dụng
                     if (medicine.expiryDate.HasValue)
                         dtpHanSuDung.Value = medicine.expiryDate.Value;
@@ -218,5 +218,6 @@ namespace ou_care.ChucNangNhanVien
             // Hiển thị form dưới dạng cửa sổ con
             chatForm.ShowDialog(); 
         }
+
     }
 }

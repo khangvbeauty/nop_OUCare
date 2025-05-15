@@ -67,6 +67,7 @@
           <Property Name="note" Type="nvarchar" MaxLength="500" />
           <Property Name="nextCheckupDate" Type="datetime" />
           <Property Name="preserveInfo" Type="nvarchar" MaxLength="300" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="MedicineBatch">
           <Key>
@@ -371,7 +372,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="medCode" Type="String" />
+          <Property Name="medCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Double" />
           <Property Name="quantity" Type="Int32" />
@@ -388,6 +389,7 @@
           <Property Name="note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="nextCheckupDate" Type="DateTime" Precision="3" />
           <Property Name="preserveInfo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MedicineBatch">
           <Key>
@@ -697,6 +699,7 @@
           <EntitySetMapping Name="Medicines">
             <EntityTypeMapping TypeName="OUCareModel.Medicine">
               <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="preserveInfo" ColumnName="preserveInfo" />
                 <ScalarProperty Name="nextCheckupDate" ColumnName="nextCheckupDate" />
                 <ScalarProperty Name="note" ColumnName="note" />

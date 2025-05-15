@@ -14,8 +14,10 @@ namespace DataLayer
         {
             using (var db = new OUCareDBContext())
             {
-                return db.Medicines.Select(m => new MedicineViewModelDTO
-                {
+                return db.Medicines
+                        .Where(m => m.Status != "Inactive") // chỉ lấy thuốc chưa bị ẩn
+                        .Select(m => new MedicineViewModelDTO
+         {
                     ID = m.ID,
                     Name = m.name,
                     Price = m.price,
@@ -33,7 +35,7 @@ namespace DataLayer
             using (var db = new OUCareDBContext())
             {
                 return db.Medicines
-                         .Where(m => m.name.Contains(keyword))
+                         .Where(m => m.name.Contains(keyword) && m.Status != "Inactive")
                          .Select(m => new MedicineViewModelDTO
                          {
                              ID = m.ID,
@@ -59,7 +61,8 @@ namespace DataLayer
                     createdDate = dto.CreatedDate,
                     priceMua = dto.PriceMua,
                     priceBan = dto.PriceBan,
-                    groupID = dto.GroupID
+                    groupID = dto.GroupID,
+                    Status = "Active"
                 };
 
                 db.Medicines.Add(med);
@@ -85,7 +88,7 @@ namespace DataLayer
                 var medicine = db.Medicines.Find(id);
                 if (medicine != null)
                 {
-                    db.Medicines.Remove(medicine);
+                    medicine.Status = "Inactive"; // hoặc medicine.IsDeleted = true;
                     db.SaveChanges();
                 }
             }
