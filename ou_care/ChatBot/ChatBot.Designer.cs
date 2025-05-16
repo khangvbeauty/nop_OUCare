@@ -96,6 +96,7 @@
             this.Controls.Add(this.txtOutput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChatBot";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChatBot";
             this.Load += new System.EventHandler(this.ChatBot_Load);
             this.ResumeLayout(false);

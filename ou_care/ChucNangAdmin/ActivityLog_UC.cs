@@ -128,6 +128,7 @@ namespace ou_care.ChucNangAdmin
             dgvLogs.Columns.Add(btnDetail);
         }
 
+        
         private void LoadLogData()
         {
             // Lấy giá trị từ các bộ lọc
@@ -173,7 +174,7 @@ namespace ou_care.ChucNangAdmin
 
                 using (var package = new OfficeOpenXml.ExcelPackage())
                 {
-                    var worksheet = package.Workbook.Worksheets.Add("Logs");
+                    var worksheet = package.Workbook.Worksheets.Add("Logs"); // tên sheet
 
                     // Thiết lập tiêu đề
                     string[] headers = { "Thời gian", "Người dùng", "Hành động", "Loại đối tượng", "ID đối tượng" };
@@ -259,7 +260,8 @@ namespace ou_care.ChucNangAdmin
 
                     // Tạo bảng
                     PdfPTable table = new PdfPTable(5) { WidthPercentage = 100 };
-                    float[] widths = new float[] { 20f, 20f, 25f, 20f, 15f };
+                    float[] widths = new float[] { 20f, 20f, 25f, 20f, 15f }; // thiết lập chiều rộng theo tỉ lệ
+
                     table.SetWidths(widths);
 
                     string[] headers = { "Thời gian", "Người dùng", "Hành động", "Loại đối tượng", "ID đối tượng" };
@@ -311,6 +313,11 @@ namespace ou_care.ChucNangAdmin
             public string Text { get; set; }
             // Lưu giá trị 
             public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text; // ép kiểu hiển thị về dạng text
+            }
         }
 
         private void ShowLogDetail(LogDTO log)

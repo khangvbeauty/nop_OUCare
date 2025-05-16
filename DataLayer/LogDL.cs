@@ -62,7 +62,7 @@ namespace DataLayer
             }
         }
 
-        // Dùng trong xem chi tiết Log
+     
         public LogDTO GetLogByID(int logID)
         {
             using (var context = new OUCareDBContext())

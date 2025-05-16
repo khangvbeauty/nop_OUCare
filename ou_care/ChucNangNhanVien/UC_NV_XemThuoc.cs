@@ -35,7 +35,7 @@ namespace ou_care.ChucNangNhanVien
             LoadMedicines();
             StyleDataGridView();
 
-            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice); //tải danh sách webcam
             foreach (FilterInfo device in filterInfoCollection)
                 cbCamera.Items.Add(device.Name);
 
@@ -59,7 +59,7 @@ namespace ou_care.ChucNangNhanVien
 
             var medicines = medicineBUS.GetAllMedicines()
                 .Where(m =>
-                    (!string.IsNullOrEmpty(m.Name) && m.Name.ToLower().Contains(keyword)) ||
+                    (!string.IsNullOrEmpty(m.Name) && m.Name.ToLower().Contains(keyword)) || //Check chuỗi không phân biết chữ hoa thường
                     (!string.IsNullOrEmpty(m.MedCode) && m.MedCode.ToLower().Contains(keyword)))
                 .ToList();
 
@@ -124,38 +124,38 @@ namespace ou_care.ChucNangNhanVien
 
         private void btnStartQR_Click(object sender, EventArgs e)
         {
-            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbCamera.SelectedIndex].MonikerString);
-            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
+            videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[cbCamera.SelectedIndex].MonikerString); //chọn webcam từ cbox
+            videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame; //gán sự kiện newframe
             videoCaptureDevice.Start();
         }
         private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            Bitmap originalBitmap = (Bitmap)eventArgs.Frame.Clone();
+            Bitmap originalBitmap = (Bitmap)eventArgs.Frame.Clone(); //lấy frame từ webcam
 
             // hiển thị ra picturebox (dùng một bản clone)
             picWebcam.Image = (Bitmap)originalBitmap.Clone();
 
-            // tạo bản bitmap riêng biệt chỉ để decode
+            // tạo bản bitmap riêng biệt chỉ để decode từ thư viện Zxing
             using (Bitmap qrBitmap = new Bitmap(originalBitmap))
             {
                 BarcodeReader reader = new BarcodeReader
                 {
                     AutoRotate = true,
-                    TryInverted = true
+                    TryInverted = true //thử nền trắng chữ đen
                 };
 
                 var result = reader.Decode(qrBitmap);
 
                 if (result != null)
                 {
-                    txtSearch.Invoke(new MethodInvoker(delegate ()
+                    txtSearch.Invoke(new MethodInvoker(delegate () //Webcam dùng trên thread khác cần chuyển về thread giao diện tránh lỗi, MI là delegate không tham số trả void
                     {
                         txtSearch.Text = result.ToString();
                     }));
                     string code = result.Text.Trim();
 
                     var list = medicineBUS.GetAllMedicines()
-                                          .Where(m => m.MedCode == code)
+                                          .Where(m => m.MedCode == code) //lọc theo code
                                           .ToList();
 
                     if (list.Count > 0)
@@ -163,9 +163,9 @@ namespace ou_care.ChucNangNhanVien
                         dgvMedicines.Invoke(new MethodInvoker(() =>
                         {
                             dgvMedicines.DataSource = list;
-                        }));
+                        })); //hiện thị kết quả tìm kiếm lên dgv
 
-                        videoCaptureDevice.SignalToStop();
+                        videoCaptureDevice.SignalToStop(); //tự động dừng webcam khi thấy mã
                     }
                 }
             }

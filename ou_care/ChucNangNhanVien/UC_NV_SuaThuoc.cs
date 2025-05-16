@@ -42,8 +42,8 @@ namespace ou_care.ChucNangNhanVien
                     txtSLHienTai.Text = medicine.quantity.ToString();
                     dtpHSD.Value = medicine.expiryDate ?? DateTime.Now;
                     dtpNgayNhap.Value = medicine.createdDate ?? DateTime.Now;
-                    txtGiaMua.Text = medicine.price?.ToString() ?? "0";
-                    txtGiaBan.Text = medicine.price?.ToString() ?? "0";
+                    txtGiaMua.Text = medicine.priceMua.ToString() ?? "0";
+                    txtGiaBan.Text = medicine.priceBan.ToString() ?? "0";
                 }
                 else
                 {

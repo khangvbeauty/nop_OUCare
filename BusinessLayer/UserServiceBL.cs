@@ -101,7 +101,5 @@ namespace BusinessLayer
                 throw new Exception("Lỗi khi thêm người dùng: " + ex.Message);
             }
         }
-
-
     }
 }

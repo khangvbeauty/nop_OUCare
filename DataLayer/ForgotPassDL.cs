@@ -66,10 +66,11 @@ namespace DataLayer
 
         private string GenerateRandomPassword(int length = 8)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Chuỗi chứa tập ký tự cho phép dùng trong mật khẩu
             Random random = new Random();
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Repeat(chars, length) //  // Tạo một danh sách gồm 8 phần tử giống nhau là chars
+                .Select(s => s[random.Next(s.Length)]).ToArray()); // với mỗi chars gán 1 ký tự ngẫu nhiên -> chuyển thành arr -> ghép lại
+              // s.length = 62, random.Next trả về từ 0-61
         }
 
         private void SendResetPasswordEmail(string toEmail, string userName, string newPassword)
@@ -77,7 +78,7 @@ namespace DataLayer
             try
             {
                 MailMessage mail = new MailMessage();
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587); // Khởi tạo SMTP client, dùng máy chủ Gmail
 
                 mail.From = new MailAddress("nqk99991@gmail.com","OUCare System"); //email gửi
 
@@ -88,7 +89,7 @@ namespace DataLayer
                             $"Vui lòng đăng nhập và đổi mật khẩu ngay sau khi nhận được email này.\n\n" +
                             $"Trân trọng,\nOUCare Team";
 
-                smtpClient.Credentials = new NetworkCredential("nqk99991@gmail.com", "wwww jslw esah fmlq"); // App Password
+                smtpClient.Credentials = new NetworkCredential("nqk99991@gmail.com", "wwww jslw esah fmlq"); //  thông tin xác thực App Password
                 smtpClient.EnableSsl = true;
 
                 smtpClient.Send(mail);

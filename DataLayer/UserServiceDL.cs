@@ -27,15 +27,14 @@ namespace DataLayer
         public bool IsUserLogin_ORM(string username, string password)
         {
             using (var context = new OUCareDBContext())
-            {
-                //return context.Users.Any(u => u.userName == username && u.passWord == password && u.isActive == 1);
+            {                
                 return context.Users
                     .Where(u => u.isActive == 1)
+                    // toàn bộ kết quả của câu lệnh trước đó được tải về bộ nhớ C# dưới dạng IEnumerable
                     .AsEnumerable() // chuyển sang xử lý phía client
                     .Any(u =>
-                        string.Equals(u.userName, username, StringComparison.Ordinal) &&
+                        string.Equals(u.userName, username, StringComparison.Ordinal) && // so sánh nhị phân (phân biệt hoa thường)
                         string.Equals(u.passWord, password, StringComparison.Ordinal));
-
             }
         }
 
@@ -109,40 +108,6 @@ namespace DataLayer
             }
         }
 
-        public bool UpdateProfile(string username, string name, string email, string oldPw, string newPw)
-        {
-            using (var context = new OUCareDBContext())
-            {
-                var user = context.Users.FirstOrDefault(u => u.userName == username);
-                if (user == null) return false;
-
-                bool isUpdated = false;
-
-                if (user.name != name)
-                {
-                    user.name = name;
-                    isUpdated = true;
-                }
-                if (user.email != email)
-                {
-                    user.email = email;
-                    isUpdated = true;
-                }
-                if (!string.IsNullOrEmpty(oldPw) && !string.IsNullOrEmpty(newPw) && user.passWord == oldPw)
-                {
-                    user.passWord = newPw;
-                    isUpdated = true;
-                }
-
-                if (isUpdated)
-                {
-                    context.SaveChanges();
-                }
-
-                return isUpdated;
-            }
-        }
-
         public bool UpdateProfile(string username, string name, string email, string newPw, int roleID, int statusValue)
         {
             using (var context = new OUCareDBContext())
@@ -152,7 +117,7 @@ namespace DataLayer
                 {
                     user.name = name;
                     user.email = email;
-                    if (!string.IsNullOrEmpty(newPw))
+                    if (!string.IsNullOrEmpty(newPw)) // Nếu newPw không trống, cập nhật mật khẩu
                     {
                         user.passWord = newPw;
                     }

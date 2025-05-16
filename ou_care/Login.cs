@@ -42,49 +42,6 @@ namespace ou_care
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //string user, pass;
-            //// Lấy dữ liệu từ người dùng
-            //user = txtUsername.Text;
-            //pass = txtPw.Text;
-
-            //Acccount account = new Acccount(user, pass);
-            //if(string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPw.Text)) 
-            //{
-            //    MessageBox.Show("Vui lòng nhập đầy đủ thông tin username và password.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return; 
-            //}
-
-            //if (isUserLogin(account))
-            //{
-            //    // Lấy thông tin người dùng và lưu vào Global
-            //    UsersDTO userProfile = userService.GetUserProfile(user);
-            //    if (userProfile != null)
-            //    {
-            //        Global.CurrentUser = userProfile;
-            //        logBL.LogLogin(Global.CurrentUser.ID, Global.CurrentUser.ID);
-            //        if(Global.CurrentUser.ID == 1)
-            //        {
-            //            Admin adminForm = new Admin(account); // Không cần truyền Acccount nữa
-            //            this.Hide();
-            //            adminForm.Show();
-            //        }
-            //        else
-            //        {
-            //            NhanVien nv = new NhanVien(); // Không cần truyền Acccount nữa
-            //            this.Hide();
-            //            nv.Show();
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Không thể tải thông tin người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
             string user = txtUsername.Text;
             string pass = txtPw.Text;
 

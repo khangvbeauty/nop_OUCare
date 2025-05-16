@@ -11,7 +11,7 @@ namespace DataLayer
     {
         public void AddBillDetail(BillDetail billDetail)
         {
-            using (OUCareDBContext db = new OUCareDBContext()) // thay bằng đúng tên DbContext của bạn
+            using (OUCareDBContext db = new OUCareDBContext()) 
             {
                 db.BillDetails.Add(billDetail);
                 db.SaveChanges();

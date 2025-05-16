@@ -57,7 +57,7 @@ namespace ou_care.ChucNangNhanVien
             Bill bill = new Bill
             {
                 cusID = currentCustomer.ID,
-                //userID = currentUser.ID chưa có Login làm sẵn
+                userID = currentUser.ID,
                 total = (decimal)totalAmount,
                 billDate = DateTime.Now,
                 qrLink = "link_qr_code"
@@ -167,7 +167,7 @@ namespace ou_care.ChucNangNhanVien
                     if (medicine.expiryDate.HasValue)
                         dtpHanSuDung.Value = medicine.expiryDate.Value;
                     else
-                        dtpHanSuDung.Value = DateTime.Now; // hoặc để trống, tùy yêu cầu
+                        dtpHanSuDung.Value = DateTime.Now; 
                 }
             }
         }
@@ -212,10 +212,7 @@ namespace ou_care.ChucNangNhanVien
 
         private void btnChatBot_Click(object sender, EventArgs e)
         {
-            // Tạo form ChatBot
             ChatBotOUC.ChatBot chatForm = new ChatBotOUC.ChatBot();
-
-            // Hiển thị form dưới dạng cửa sổ con
             chatForm.ShowDialog(); 
         }
 

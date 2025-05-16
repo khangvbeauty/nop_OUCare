@@ -27,7 +27,7 @@ namespace ou_care.ChucNangNhanVien
 
         private void UC_NV_KiemTraThuoc_Load(object sender, EventArgs e)
         {
-            cbTrangThai.SelectedIndex = 2; // Mặc định hiển thị thuốc còn hạn
+            cbTrangThai.SelectedIndex = 2; // Mặc định hiển thị thuốc tất cả
             LoadData();
         }
         private void LoadData()
@@ -47,7 +47,7 @@ namespace ou_care.ChucNangNhanVien
                 m.medCode,
                 m.name,
                 m.quantity,
-                price = m.priceMua ?? 0,
+                price = m.priceBan ?? 0,
                 m.expiryDate,
                 m.createdDate
             }).ToList();

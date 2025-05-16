@@ -20,6 +20,7 @@ namespace ou_care.ChucNangAdmin
         private int ID; // Lưu id của người dùng được chọn
         UsersDTO currentUser = Global.CurrentUser;
         LogBL logBL = new LogBL();
+
         public Edit_UC(string username, int ID)
         {
             InitializeComponent();
@@ -34,16 +35,18 @@ namespace ou_care.ChucNangAdmin
             int newRole = int.Parse(cmbUserRole.SelectedItem.ToString());
 
             UsersDTO userProfile = userService.GetUserProfile(username);
+
+            // tài khoản đang hoạt động thì check
             if (userProfile.IsActive == 1)
                 checkboxStt.Checked = true;
             else
                 checkboxStt.Checked = false;
-
+            // nếu là tài khoản admin đang đăng nhập bấm vào thì ko cho tắt HĐ
             if (Global.CurrentUser.ID == userProfile.ID)
             {
                 checkboxStt.Enabled = false;
             }
-
+            // ko cho hạ role
             if (Global.CurrentUser.userName == username)
             {
                 cmbUserRole.Enabled = false;
@@ -64,7 +67,6 @@ namespace ou_care.ChucNangAdmin
                     txtName.Text = userProfile.name;
                     txtEmail.Text = userProfile.email;
                     txtOldPass.Text = userProfile.passWord;
-                    //txtUserRole.Text = userProfile.roleID.HasValue ? userProfile.roleID.ToString() : "N/A";
 
                     // Gán giá trị cho ComboBox vai trò
                     cmbUserRole.SelectedItem = userProfile.roleID.HasValue ? userProfile.roleID.ToString() : null;
@@ -96,12 +98,12 @@ namespace ou_care.ChucNangAdmin
                 string email = txtEmail.Text.Trim();
                 string oldPassword = txtOldPass.Text.Trim();
                 string newPassword = txtNewPass.Text.Trim();
-                int statusValue = checkboxStt.Checked ? 1 : 0; // *
+                int statusValue = checkboxStt.Checked ? 1 : 0;
 
                 // Lấy vai trò từ ComboBox
                 int newRole = int.Parse(cmbUserRole.SelectedItem.ToString());
 
-                UsersDTO userProfile = userService.GetUserProfile(username); // *
+                UsersDTO userProfile = userService.GetUserProfile(username); 
 
                 bool hasChanges = txtName.Text != userProfile.name ||
                   txtEmail.Text != userProfile.email ||
@@ -115,8 +117,6 @@ namespace ou_care.ChucNangAdmin
                     return;
                 }
 
-
-
                 if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email))
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
@@ -129,8 +129,6 @@ namespace ou_care.ChucNangAdmin
                     MessageBox.Show("Email không đúng định dạng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-
 
                 // Gọi phương thức UpdateProfile
                 bool success = userService.UpdateProfile(username, name, email, oldPassword, newPassword, newRole, statusValue);

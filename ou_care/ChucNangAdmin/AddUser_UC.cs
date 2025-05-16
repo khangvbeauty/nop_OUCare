@@ -38,7 +38,7 @@ namespace ou_care.ChucNangAdmin
 
         private bool IsValidEmail(string email)
         {
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; 
             return Regex.IsMatch(email, pattern);
         }
 
@@ -51,6 +51,7 @@ namespace ou_care.ChucNangAdmin
                 return;
             }
             int currentUserID = Global.CurrentUser.ID;
+
             // Chuẩn hóa dữ liệu lấy trên giao diện
             string username = txtUsername.Text.Trim();
             string name = txtName.Text.Trim();

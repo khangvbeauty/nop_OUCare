@@ -122,7 +122,6 @@ namespace ou_care.ChucNangNhanVien
 
         private void UC_NV_QuanLyKH_Load(object sender, EventArgs e)
         {
-            //txtID.Visible = false;
             if (!string.IsNullOrEmpty(NhanVien.SdtTamThoi))
             {
                 txtPhone.Text = NhanVien.SdtTamThoi;
