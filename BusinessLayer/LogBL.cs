@@ -39,10 +39,10 @@ namespace BusinessLayer
             logDL.AddLog(log);
         }
 
-        public LogDTO GetLogDetail(int logID)
-        {
-            return logDL.GetLogByID(logID);
-        }
+        //public LogDTO GetLogDetail(int logID)
+        //{
+        //    return logDL.GetLogByID(logID);
+        //}
 
         // Phương thức tiện ích: Ghi log thêm thuốc
         public void LogAddMedicine(int userID, int medicineID)

@@ -37,6 +37,7 @@ namespace ou_care.ChucNangAdmin
             cboActionType.Items.AddRange(new string[] {
                 "Thêm thuốc", "Sửa thuốc", "Xóa thuốc",
                 "Tạo hóa đơn", "Thêm khách hàng", "Sửa khách hàng",
+                "Đặt lại mật khẩu",
                 "Thêm người dùng", "Sửa người dùng", "Xóa người dùng","Đăng nhập", "Đăng xuất"
             });
             cboActionType.SelectedIndex = 0;

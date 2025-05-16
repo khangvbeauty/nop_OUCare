@@ -18,8 +18,5 @@ namespace TransferObject
         // Thuộc tính bổ sung cho hiển thị
         public string userName { get; set; }
         public string logDateFormatted { get; set; }
-
-        // Chi tiết liên quan đến đối tượng (có thể mở rộng)
-        public string entityDetail { get; set; }
     }
 }

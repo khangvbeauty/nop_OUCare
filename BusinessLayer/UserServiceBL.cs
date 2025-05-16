@@ -77,23 +77,23 @@ namespace BusinessLayer
             }
         }
 
-        public bool UpdateProfile2(string username, string name, string email, string oldPw, string newPw)
-        {
-            try
-            {
-                return userDL.UpdateProfile(username, name, email, oldPw, newPw);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi thay đổi thông tin: " + ex.Message);
-            }
-        }
+        //public bool UpdateProfile2(string username, string name, string email, string oldPw, string newPw)
+        //{
+        //    try
+        //    {
+        //        return userDL.UpdateProfile(username, name, email, oldPw, newPw);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Lỗi khi thay đổi thông tin: " + ex.Message);
+        //    }
+        //}
 
-        public bool UpdateProfile(string username, string name, string email, string oldPw, string newPw, int roleID)
+        public bool UpdateProfile(string username, string name, string email, string oldPw, string newPw, int roleID, int status) // *
         {
             try
             {
-                bool result = userDL.UpdateProfile(username, name, email, newPw, roleID);
+                bool result = userDL.UpdateProfile(username, name, email, newPw, roleID, status);
                 if (result)
                 {
                    

@@ -109,6 +109,7 @@ namespace ou_care.ChucNangAdmin
                     txtEmail.Text,
                     txtOldPass.Text,
                     txtNewPass.Text,
+                    1, // mặc định profile của admin vô được tới chức năng này thì nó phải là 1
                     Convert.ToInt32(txtUserRole.Text)
                 );
 

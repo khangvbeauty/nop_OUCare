@@ -72,7 +72,7 @@ namespace DataLayer
         }
         public (int conHan, int hetHan) GetMedicineExpiryStats()
         {
-            using (var db = new OUCareDBContext()) // hoặc OUCareDBContext
+            using (var db = new OUCareDBContext()) /
             {
                 DateTime now = DateTime.Now;
                 int conHan = db.Medicines.Count(m => m.expiryDate >= now);
@@ -88,7 +88,7 @@ namespace DataLayer
                 var medicine = db.Medicines.Find(id);
                 if (medicine != null)
                 {
-                    medicine.Status = "Inactive"; // hoặc medicine.IsDeleted = true;
+                    medicine.Status = "Inactive"; 
                     db.SaveChanges();
                 }
             }

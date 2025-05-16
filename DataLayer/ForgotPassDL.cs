@@ -46,7 +46,7 @@ namespace DataLayer
 
                     // Tạo mật khẩu mới
                     string newPassword = GenerateRandomPassword();
-                    user.passWord = HashPassword(newPassword); // Mã hóa nếu cần
+                    //user.passWord = HashPassword(newPassword); // Mã hóa nếu cần
 
                     // Cập nhật mật khẩu
                     context.SaveChanges();
@@ -83,11 +83,11 @@ namespace DataLayer
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private string HashPassword(string password)
-        {
-            return password; // Thay bằng BCrypt nếu cần
-            // Ví dụ: return BCrypt.Net.BCrypt.HashPassword(password);
-        }
+        //private string HashPassword(string password)
+        //{
+        //    return password; // Thay bằng BCrypt nếu cần
+        //    // Ví dụ: return BCrypt.Net.BCrypt.HashPassword(password);
+        //}
 
         private void SendResetPasswordEmail(string toEmail, string userName, string newPassword)
         {
