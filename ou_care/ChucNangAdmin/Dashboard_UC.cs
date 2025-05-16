@@ -69,25 +69,25 @@ namespace ou_care.ChucNangAdmin
             List<MedicineDTO> topMedicines = bl.Lay5ThuocBanChay(dtpStartDate.Value, dtpEndDate.Value);
 
             // Xóa series hiện tại (nếu có)
-            chartBestSeller.Series.Clear();
+            bieuDo.Series.Clear(); // series đại diện cho một tập dữ liệu của biều đồ
 
             // Tạo series mới cho biểu đồ
-            var series = chartBestSeller.Series.Add("TopMedicines");
+            var series = bieuDo.Series.Add("TopMedicines"); // chứa dữ liệu của 5 thuốc bán chạy
             series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
 
             // Thêm dữ liệu vào series
             foreach (var med in topMedicines)
             {
-                int pointIndex = series.Points.AddY(med.Quantity);
-                series.Points[pointIndex].LegendText = med.Name;
-                series.Points[pointIndex].Label = med.Quantity.ToString();
+                int pointIndex = series.Points.AddY(med.Quantity); // Thêm một điểm dữ liệu với giá trị Y là med.Quantity (số lượng bán)
+                series.Points[pointIndex].LegendText = med.Name; //Gán tên thuốc làm chú thích (legend) cho điểm dữ liệu
+                series.Points[pointIndex].Label = med.Quantity.ToString(); // Gán số lượng làm nhãn(label) hiển thị trực tiếp trên từng miếng
             }
 
             // Cấu hình thêm cho biểu đồ
-            chartBestSeller.Titles.Clear();
-            chartBestSeller.Titles.Add("5 Thuốc bán chạy");
-            chartBestSeller.Legends[0].Enabled = true;
-            chartBestSeller.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            bieuDo.Titles.Clear();
+            bieuDo.Titles.Add("5 Thuốc bán chạy");
+            bieuDo.Legends[0].Enabled = true;
+            bieuDo.Legends[0].Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom; // Đặt vị trí của chú thích ở phía dưới biểu đồ
         }
 
         private void Dashboard_UC_Load(object sender, EventArgs e)

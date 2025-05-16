@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransferObject
 {
-    // Các thuộc tính không cho phép null (nhưng trong data base, các giá trị có thể null)
+    // Các thuộc tính như kiểu int không cho phép null (nhưng trong database, các giá trị có thể null)
     public class UsersDTO
     {
         public int ID { get; set; }
@@ -16,7 +16,7 @@ namespace TransferObject
         public string email { get; set; }
         public int? roleID { get; set; }
         public DateTime? CreateDate { get; set; }
-        public int? IsActive { get; set; } // ?: Cho phép null
+        public int? IsActive { get; set; } // int?: Cho phép null
        
     }
 }

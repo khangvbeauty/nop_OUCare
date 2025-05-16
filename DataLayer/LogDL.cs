@@ -9,6 +9,7 @@ namespace DataLayer
 {
     public class LogDL
     {
+        // lấy danh sách các bản ghi log từ cơ sở dữ liệu dựa trên các tiêu chí lọc 
         public List<LogDTO> GetFilteredLogs(DateTime startDate, DateTime endDate, string action = null, int? userID = null, string entityType = null)
         {
             using (var context = new OUCareDBContext())
@@ -26,9 +27,9 @@ namespace DataLayer
                                 logDate = l.logDate,
                                 userName = u.name,
                                 logDateFormatted = l.logDate.ToString()
-                                //.ToString("dd/MM/yyyy HH:mm:ss")
                             };
 
+                // Nếu action không rỗng hoặc không null, truy vấn sẽ được lọc để chỉ lấy các log có giá trị action khớp với tham số
                 if (!string.IsNullOrEmpty(action))
                     query = query.Where(l => l.action == action);
 
@@ -42,11 +43,12 @@ namespace DataLayer
             }
         }
 
+        // thêm một bản ghi log mới
         public void AddLog(LogDTO log)
         {
             using (var context = new OUCareDBContext())
             {
-                var newLog = new Log
+                var newLog = new Log // Log là một entity
                 {
                     userID = log.userID,
                     action = log.action,
@@ -60,6 +62,7 @@ namespace DataLayer
             }
         }
 
+        // Dùng trong xem chi tiết Log
         public LogDTO GetLogByID(int logID)
         {
             using (var context = new OUCareDBContext())

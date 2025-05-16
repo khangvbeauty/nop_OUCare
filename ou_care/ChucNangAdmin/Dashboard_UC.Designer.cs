@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label3 = new System.Windows.Forms.Label();
             this.btn7days = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
@@ -47,13 +47,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dgvThuocThap = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.chartBestSeller = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.bieuDo = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbTongGiaoDich = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThuocThap)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBestSeller)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bieuDo)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -240,35 +240,35 @@
             this.panel5.Size = new System.Drawing.Size(475, 490);
             this.panel5.TabIndex = 44;
             // 
-            // chartBestSeller
+            // bieuDo
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartBestSeller.ChartAreas.Add(chartArea4);
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            legend4.IsTextAutoFit = false;
-            legend4.Name = "Legend1";
-            this.chartBestSeller.Legends.Add(legend4);
-            this.chartBestSeller.Location = new System.Drawing.Point(485, 233);
-            this.chartBestSeller.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.chartBestSeller.Name = "chartBestSeller";
-            this.chartBestSeller.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            series4.IsValueShownAsLabel = true;
-            series4.LabelForeColor = System.Drawing.Color.White;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartBestSeller.Series.Add(series4);
-            this.chartBestSeller.Size = new System.Drawing.Size(455, 490);
-            this.chartBestSeller.TabIndex = 43;
-            this.chartBestSeller.Text = "chartTopProducts";
-            title4.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            title4.Name = "Title1";
-            title4.Text = "5 Thuốc bán chạy";
-            this.chartBestSeller.Titles.Add(title4);
+            chartArea1.Name = "ChartArea1";
+            this.bieuDo.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.bieuDo.Legends.Add(legend1);
+            this.bieuDo.Location = new System.Drawing.Point(485, 233);
+            this.bieuDo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.bieuDo.Name = "bieuDo";
+            this.bieuDo.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.bieuDo.Series.Add(series1);
+            this.bieuDo.Size = new System.Drawing.Size(455, 490);
+            this.bieuDo.TabIndex = 43;
+            this.bieuDo.Text = "chartTopProducts";
+            title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            title1.Name = "Title1";
+            title1.Text = "5 Thuốc bán chạy";
+            this.bieuDo.Titles.Add(title1);
             // 
             // label2
             // 
@@ -321,7 +321,7 @@
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.btnLast30Days);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.chartBestSeller);
+            this.Controls.Add(this.bieuDo);
             this.Controls.Add(this.panel3);
             this.Name = "Dashboard_UC";
             this.Size = new System.Drawing.Size(947, 736);
@@ -329,7 +329,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvThuocThap)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBestSeller)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bieuDo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -354,7 +354,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvThuocThap;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartBestSeller;
+        private System.Windows.Forms.DataVisualization.Charting.Chart bieuDo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lbTongGiaoDich;

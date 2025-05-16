@@ -21,6 +21,8 @@ namespace ou_care.ChucNangAdmin
         private UserServiceBL userService;
         private Acccount currentAccount;
         UsersDTO currentUser = Global.CurrentUser;
+        private LogBL logBL = new LogBL();
+
         public Profile_UC(Acccount account)
         {
             InitializeComponent();
@@ -109,11 +111,13 @@ namespace ou_care.ChucNangAdmin
                     txtEmail.Text,
                     txtOldPass.Text,
                     txtNewPass.Text,
+                    1, // Mặc định admin vô được tới đây thì trạng thái phải là 1
                     Convert.ToInt32(txtUserRole.Text)
                 );
 
                 if (updated)
                 {
+                    logBL.LogUpdateUser(Global.CurrentUser.ID, Global.CurrentUser.ID); // Trong profile thì đang update chính mình
                     MessageBox.Show("Cập nhật thành công.");
                     LoadProfile(currentAccount.Username);
                 }

@@ -69,22 +69,23 @@ namespace DataLayer
             using (var context = new OUCareDBContext())
             {
                 return context.BillDetails
-                    .Join(context.Bills,  // Tên bảng đúng theo schema
-                        bd => bd.billID, // Tên field đúng theo schema
-                        b => b.ID,
-                        (bd, b) => new { BillDetail = bd, Bill = b })
+                    .Join(context.Bills,  
+                        bd => bd.billID, // Khóa từ BillDetails
+                        b => b.ID, // Khóa từ Bills
+                        (bd, b) => new { BillDetail = bd, Bill = b }) // Tạo một đối tượng tạm chứa cả thông tin của BillDetail và Bill cho mỗi cặp khớp
                     .Where(joined => joined.Bill.billDate >= startDate && joined.Bill.billDate <= endDate)
-                    .GroupBy(joined => joined.BillDetail.medID)
+                    .GroupBy(joined => joined.BillDetail.medID) // Nhóm các bản ghi theo medID
                     .Select(g => new
                     {
-                        MedicineId = g.Key,
+                        MedicineId = g.Key, // Là medID (khóa nhóm từ GroupBy)
                         TotalQuantity = g.Sum(joined => joined.BillDetail.quantity)
                     })
                     .OrderByDescending(x => x.TotalQuantity)
                     .Take(5)
-                    .Join(context.Medicines,  // Tên bảng đúng theo schema
-                        top => top.MedicineId,
-                        med => med.ID,
+                    // khi Join, duyệt qua từng bản ghi trong tập hợp trước đó và gán mỗi bản ghi đó vào biến top với hai thuộc tính: MedicineId và TotalQuantity
+                    .Join(context.Medicines,  
+                        top => top.MedicineId, 
+                        med => med.ID,  // Khóa từ Medicines
                         (top, med) => new MedicineDTO
                         {
                             Name = med.name,
@@ -93,6 +94,5 @@ namespace DataLayer
                     .ToList();
             }
         }
-
     }
 }

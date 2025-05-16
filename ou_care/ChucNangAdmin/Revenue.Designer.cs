@@ -126,6 +126,7 @@
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(289, 27);
             this.dtpStartDate.TabIndex = 21;
+            this.dtpStartDate.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             // 
             // btnExportPDF
             // 

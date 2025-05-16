@@ -33,6 +33,7 @@
             this.txtPw = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.panel2_39_Khanh = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkPw = new System.Windows.Forms.CheckBox();
             this.ll_39_Khanh = new System.Windows.Forms.LinkLabel();
             this.label6_39_Khanh = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.lb2 = new System.Windows.Forms.Label();
             this.panel1_39_Khanh = new System.Windows.Forms.Panel();
             this.picLogo39_Khanh = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2_39_Khanh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPass_39_Khanh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUser_39_Khanh)).BeginInit();
@@ -78,6 +78,7 @@
             this.txtPw.PasswordChar = '*';
             this.txtPw.Size = new System.Drawing.Size(332, 35);
             this.txtPw.TabIndex = 20;
+            this.txtPw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPw_KeyDown);
             // 
             // txtUsername
             // 
@@ -88,7 +89,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(331, 35);
             this.txtUsername.TabIndex = 19;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // panel2_39_Khanh
             // 
@@ -113,6 +113,20 @@
             this.panel2_39_Khanh.Name = "panel2_39_Khanh";
             this.panel2_39_Khanh.Size = new System.Drawing.Size(463, 527);
             this.panel2_39_Khanh.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Navy;
+            this.button1.Location = new System.Drawing.Point(396, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 47);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkPw
             // 
@@ -281,19 +295,6 @@
             this.picLogo39_Khanh.Size = new System.Drawing.Size(175, 164);
             this.picLogo39_Khanh.TabIndex = 10;
             this.picLogo39_Khanh.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Navy;
-            this.button1.Location = new System.Drawing.Point(396, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 47);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // Login
             // 

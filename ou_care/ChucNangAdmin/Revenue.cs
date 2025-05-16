@@ -53,7 +53,7 @@ namespace ou_care.ChucNangAdmin
 
             // Tổng doanh thu toàn bộ
             decimal tong = report.Sum(r => r.TotalRevenue);
-            lbTongDoanhThu.Text = $"Tổng doanh thu: {tong:N0} VNĐ";
+            lbTongDoanhThu.Text = $"Tổng doanh thu: {tong:N0} VNĐ"; // N0 Số có dấu phân cách hàng nghìn
         }
 
         private void Revenue_Load(object sender, EventArgs e)
@@ -110,16 +110,16 @@ namespace ou_care.ChucNangAdmin
                     return;
                 }
 
-                using (FileStream fs = new FileStream(outputPath, FileMode.Create))
+                using (FileStream fs = new FileStream(outputPath, FileMode.Create)) // tạo mới file hoặc ghi đè nếu file đã tồn tại
                 {
-                    Document document = new Document(PageSize.A4, 25, 25, 30, 30);
-                    PdfWriter.GetInstance(document, fs);
+                    Document document = new Document(PageSize.A4, 25, 25, 30, 30); // trái phải trên dưới
+                    PdfWriter.GetInstance(document, fs); // Liên kết tài liệu với luồng file để ghi nội dung PDF
                     document.Open();
 
                     // Font tiếng Việt (Arial)
-                    string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
-                    BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-                    var titleFont = new iTextSharp.text.Font(baseFont, 16, iTextSharp.text.Font.BOLD);
+                    string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf"); // Lấy đường dẫn đến file font Arial
+                    BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // tạo font cơ sở: mã hóa unicode BaseFont.IDENTITY_H
+                    var titleFont = new iTextSharp.text.Font(baseFont, 16, iTextSharp.text.Font.BOLD); 
                     var headerFont = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.BOLD);
                     var bodyFont = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
 
@@ -127,32 +127,32 @@ namespace ou_care.ChucNangAdmin
                     Paragraph title = new Paragraph("BÁO CÁO DOANH THU", titleFont)
                     {
                         Alignment = Element.ALIGN_CENTER,
-                        SpacingAfter = 10f
+                        SpacingAfter = 10f // Thêm Khoảng cách 10 point dưới tiêu đề
                     };
                     document.Add(title);
 
                     Paragraph dateRange = new Paragraph($"Từ ngày: {dtpStartDate.Value:dd/MM/yyyy}   Đến ngày: {dptEndDate.Value:dd/MM/yyyy}", headerFont)
                     {
                         Alignment = Element.ALIGN_CENTER,
-                        SpacingAfter = 20f
+                        SpacingAfter = 20f // Khoảng cách 20 point dưới dòng này.
                     };
                     document.Add(dateRange);
 
                     // Bảng
                     PdfPTable table = new PdfPTable(4)
                     {
-                        WidthPercentage = 100
+                        WidthPercentage = 100 // Bảng chiếm 100% chiều rộng trang
                     };
-                    float[] widths = new float[] { 10f, 25f, 30f, 35f };
-                    table.SetWidths(widths);
+                    float[] widths = new float[] { 10f, 25f, 30f, 35f }; // Đặt chiều rộng tương đối cho các cột
+                    table.SetWidths(widths); // Áp dụng chiều rộng cho bảng.
 
                     string[] headers = { "STT", "Ngày", "Số lượt mua", "Doanh thu (VNĐ)" };
                     foreach (var header in headers)
                     {
-                        PdfPCell cell = new PdfPCell(new Phrase(header, headerFont))
+                        PdfPCell cell = new PdfPCell(new Phrase(header, headerFont))  // Tạo ô (cell) với nội dung là tiêu đề
                         {
-                            BackgroundColor = BaseColor.LIGHT_GRAY,
-                            HorizontalAlignment = Element.ALIGN_CENTER
+                            BackgroundColor = BaseColor.LIGHT_GRAY, // Đặt nền xám nhạt cho ô tiêu đề.
+                            HorizontalAlignment = Element.ALIGN_CENTER // Căn giữa nội dung ô
                         };
                         table.AddCell(cell);
                     }
@@ -160,7 +160,7 @@ namespace ou_care.ChucNangAdmin
                     // Thêm dữ liệu từ DataGridView
                     foreach (DataGridViewRow row in dgvDoanhThu.Rows)
                     {
-                        if (!row.IsNewRow)
+                        if (!row.IsNewRow) // bỏ qua dòng mới (dòng trống cuối dgv nếu có)
                         {
                             table.AddCell(new PdfPCell(new Phrase(row.Cells["STT"].Value?.ToString() ?? "", bodyFont)) { HorizontalAlignment = Element.ALIGN_CENTER });
                             table.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row.Cells["Ngày"].Value).ToString("dd/MM/yyyy"), bodyFont)) { HorizontalAlignment = Element.ALIGN_CENTER });
@@ -175,7 +175,7 @@ namespace ou_care.ChucNangAdmin
                     Paragraph totalRevenue = new Paragraph(lbTongDoanhThu.Text, headerFont)
                     {
                         Alignment = Element.ALIGN_RIGHT,
-                        SpacingBefore = 15f
+                        SpacingBefore = 15f // Khoảng cách 15 point trên dòng này
                     };
                     document.Add(totalRevenue);
 

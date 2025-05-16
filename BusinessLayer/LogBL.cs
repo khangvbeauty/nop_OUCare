@@ -11,7 +11,6 @@ namespace BusinessLayer
     public class LogBL
     {
         private LogDL logDL = new LogDL();
-        //private UsersDTO userDAL = new UsersDTO();
 
         public List<LogDTO> GetFilteredLogs(DateTime startDate, DateTime endDate, string action = null, int? userID = null, string entityType = null)
         {
@@ -20,7 +19,6 @@ namespace BusinessLayer
 
         public List<UsersDTO> GetAllUsers()
         {
-            //return userDAL.GetAllUsers();
             return logDL.GetAllUsers();
         }
 
@@ -39,9 +37,15 @@ namespace BusinessLayer
             logDL.AddLog(log);
         }
 
-        public LogDTO GetLogDetail(int logID)
+        // Ghi log thêm khách hàng
+        public void LogAddCustomer(int userID, int cusID)
         {
-            return logDL.GetLogByID(logID);
+            AddLog(userID, "Thêm khách hàng", cusID, "Customer");
+        }
+        // Ghi log sửa khách hàng
+        public void LogUpdateCustomer(int userID, int cusID)
+        {
+            AddLog(userID, "Sửa khách hàng", cusID, "Customer");
         }
 
         // Phương thức tiện ích: Ghi log thêm thuốc
@@ -66,6 +70,8 @@ namespace BusinessLayer
         {
             AddLog(userID, "Tạo hóa đơn", billID, "Bill");
         }
+
+
 
         // Phương thức tiện ích: Ghi log thêm người dùng
         public void LogAddUser(int userID, int newUserID)
@@ -94,15 +100,6 @@ namespace BusinessLayer
         {
             AddLog(userID, "Đăng xuất", logoutUserID, "User");
         }
-        // Ghi log thêm khách hàng
-        public void LogAddCustomer(int userID, int cusID)
-        {
-            AddLog(userID, "Thêm khách hàng", cusID, "Customer");
-        }
-        // Ghi log sửa khách hàng
-        public void LogUpdateCustomer(int userID, int cusID)
-        {
-            AddLog(userID, "Sửa khách hàng", cusID, "Customer");
-        }
+       
     }
 }

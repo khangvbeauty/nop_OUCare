@@ -17,19 +17,6 @@ namespace BusinessLayer
         private readonly UserServiceDL userDL = new UserServiceDL();
         private readonly LogBL logBL = new LogBL();
 
-        //public bool IsUserLogin(Acccount account)
-        //{
-        //    try
-        //    {
-        //        object result = userDL.IsUserLogin(account.Username, account.Password);
-        //        return Convert.ToInt32(result) > 0;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Lỗi khi kiểm tra đăng nhập: " + ex.Message);
-        //    }
-        //}
-
         public bool IsUserLogin_ORM(Acccount account)
         {
             try
@@ -77,23 +64,12 @@ namespace BusinessLayer
             }
         }
 
-        public bool UpdateProfile2(string username, string name, string email, string oldPw, string newPw)
-        {
-            try
-            {
-                return userDL.UpdateProfile(username, name, email, oldPw, newPw);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi thay đổi thông tin: " + ex.Message);
-            }
-        }
 
-        public bool UpdateProfile(string username, string name, string email, string oldPw, string newPw, int roleID)
+        public bool UpdateProfile(string username, string name, string email, string oldPw, string newPw, int roleID, int statusValue)
         {
             try
             {
-                bool result = userDL.UpdateProfile(username, name, email, newPw, roleID);
+                bool result = userDL.UpdateProfile(username, name, email, newPw, roleID, statusValue);
                 if (result)
                 {
                    

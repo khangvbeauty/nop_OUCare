@@ -143,7 +143,7 @@ namespace DataLayer
             }
         }
 
-        public bool UpdateProfile(string username, string name, string email, string newPw, int roleID)
+        public bool UpdateProfile(string username, string name, string email, string newPw, int roleID, int statusValue)
         {
             using (var context = new OUCareDBContext())
             {
@@ -157,7 +157,9 @@ namespace DataLayer
                         user.passWord = newPw;
                     }
                     user.roleID = roleID;
+                    user.isActive = statusValue;
                     context.SaveChanges();
+
                     return true;
                 }
                 return false;

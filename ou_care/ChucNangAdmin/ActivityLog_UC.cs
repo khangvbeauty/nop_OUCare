@@ -37,6 +37,7 @@ namespace ou_care.ChucNangAdmin
             cboActionType.Items.AddRange(new string[] {
                 "Thêm thuốc", "Sửa thuốc", "Xóa thuốc",
                 "Tạo hóa đơn", "Thêm khách hàng", "Sửa khách hàng",
+                "Đặt lại mật khẩu",
                 "Thêm người dùng", "Sửa người dùng", "Xóa người dùng","Đăng nhập", "Đăng xuất"
             });
             cboActionType.SelectedIndex = 0;
@@ -49,6 +50,7 @@ namespace ou_care.ChucNangAdmin
             List<UsersDTO> users = logBL.GetAllUsers();
             foreach (var user in users)
             {
+                 // name để hiển thị, ID để lưu trữ 
                 cboUsers.Items.Add(new ComboboxItem { Text = user.name, Value = user.ID });
             }
             cboUsers.SelectedIndex = 0;
@@ -125,24 +127,26 @@ namespace ou_care.ChucNangAdmin
             };
             dgvLogs.Columns.Add(btnDetail);
         }
+
         private void LoadLogData()
         {
             // Lấy giá trị từ các bộ lọc
             DateTime startDate = dtpStartDate.Value;
-            DateTime endDate = dtpEndDate.Value.AddDays(1).AddSeconds(-1); // Kết thúc cuối ngày
+            DateTime endDate = dtpEndDate.Value.AddDays(1).AddSeconds(-1); // Kết thúc cuối ngày 23:59:59
 
+            // chọn một mục cụ thể, không phải mục mặc định, lấy giá trị của mục được chọn bằng SelectedItem.ToString()
             string actionFilter = cboActionType.SelectedIndex > 0 ? cboActionType.SelectedItem.ToString() : null;
 
             int? userIDFilter = null;
             if (cboUsers.SelectedIndex > 0)
             {
-                ComboboxItem selectedUser = cboUsers.SelectedItem as ComboboxItem;
-                userIDFilter = (int)selectedUser.Value;
+                ComboboxItem selectedUser = cboUsers.SelectedItem as ComboboxItem; // ép kiểu thành ComboboxItem để truy cập thuộc tính value từ text người dùng chọn
+                userIDFilter = (int)selectedUser.Value; //  gán ID người dùng) cho userIDFilter sau khi ép kiểu thành int
             }
 
             string entityTypeFilter = cboEntityType.SelectedIndex > 0 ? cboEntityType.SelectedItem.ToString() : null;
 
-            // Gọi Business Layer để lấy dữ liệu log
+            // Gọi Business Layer để lấy dữ liệu log theo bộ lọc đã chọn
             List<LogDTO> logs = logBL.GetFilteredLogs(startDate, endDate, actionFilter, userIDFilter, entityTypeFilter);
 
             // Gán dữ liệu cho DataGridView
@@ -229,7 +233,7 @@ namespace ou_care.ChucNangAdmin
 
                     // Đường dẫn tới font Unicode (arial.ttf)
                     string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
-                    BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                    BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED); // tạo font cơ sở: mã hóa unicode BaseFont.IDENTITY_H
 
                     // Tạo font sử dụng cho tiếng Việt
                     var titleFont = new iTextSharp.text.Font(baseFont, 16, iTextSharp.text.Font.BOLD);
@@ -303,13 +307,10 @@ namespace ou_care.ChucNangAdmin
         // Class hỗ trợ cho ComboBox
         public class ComboboxItem
         {
+            // Lưu văn bản hiển thị cho cbb
             public string Text { get; set; }
+            // Lưu giá trị 
             public object Value { get; set; }
-
-            public override string ToString()
-            {
-                return Text;
-            }
         }
 
         private void ShowLogDetail(LogDTO log)
@@ -358,16 +359,14 @@ namespace ou_care.ChucNangAdmin
                 ExportToPDF(filePath);
                 
             }
-        }
-
-      
+        }      
 
         private void dgvLogs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Xử lý khi click vào nút "Xem" chi tiết
             if (e.RowIndex >= 0 && e.ColumnIndex == dgvLogs.Columns.Count - 1)
             {
-                LogDTO selectedLog = (dgvLogs.DataSource as List<LogDTO>)[e.RowIndex];
+                LogDTO selectedLog = (dgvLogs.DataSource as List<LogDTO>)[e.RowIndex]; //Truy xuất đối tượng LogDTO tại hàng được nhấp
                 ShowLogDetail(selectedLog);
             }
         }

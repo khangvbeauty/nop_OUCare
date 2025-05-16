@@ -42,49 +42,97 @@ namespace ou_care
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string user, pass;
-            // Lấy dữ liệu từ người dùng
-            user = txtUsername.Text;
-            pass = txtPw.Text;
+            //string user, pass;
+            //// Lấy dữ liệu từ người dùng
+            //user = txtUsername.Text;
+            //pass = txtPw.Text;
 
-            Acccount account = new Acccount(user, pass);
-            if(string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPw.Text)) 
+            //Acccount account = new Acccount(user, pass);
+            //if(string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPw.Text)) 
+            //{
+            //    MessageBox.Show("Vui lòng nhập đầy đủ thông tin username và password.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return; 
+            //}
+
+            //if (isUserLogin(account))
+            //{
+            //    // Lấy thông tin người dùng và lưu vào Global
+            //    UsersDTO userProfile = userService.GetUserProfile(user);
+            //    if (userProfile != null)
+            //    {
+            //        Global.CurrentUser = userProfile;
+            //        logBL.LogLogin(Global.CurrentUser.ID, Global.CurrentUser.ID);
+            //        if(Global.CurrentUser.ID == 1)
+            //        {
+            //            Admin adminForm = new Admin(account); // Không cần truyền Acccount nữa
+            //            this.Hide();
+            //            adminForm.Show();
+            //        }
+            //        else
+            //        {
+            //            NhanVien nv = new NhanVien(); // Không cần truyền Acccount nữa
+            //            this.Hide();
+            //            nv.Show();
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Không thể tải thông tin người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            string user = txtUsername.Text;
+            string pass = txtPw.Text;
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin username và password.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
+            UsersDTO userProfile = userService.GetUserProfile(user);
+
+            if (userProfile == null)
+            {
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (userProfile.IsActive != 1)
+            {
+                MessageBox.Show("Tài khoản của bạn đã bị vô hiệu hóa, vui lòng liên hệ quản trị viên để được hỗ trợ.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Acccount account = new Acccount(user, pass);
             if (isUserLogin(account))
             {
-                // Lấy thông tin người dùng và lưu vào Global
-                UsersDTO userProfile = userService.GetUserProfile(user);
-                if (userProfile != null)
+                Global.CurrentUser = userProfile;
+                logBL.LogLogin(Global.CurrentUser.ID, Global.CurrentUser.ID);
+
+                if (Global.CurrentUser.roleID == 1)
                 {
-                    Global.CurrentUser = userProfile;
-                    logBL.LogLogin(Global.CurrentUser.ID, Global.CurrentUser.ID);
-                    if(Global.CurrentUser.ID == 1)
-                    {
-                        Admin adminForm = new Admin(account); // Không cần truyền Acccount nữa
-                        this.Hide();
-                        adminForm.Show();
-                    }
-                    else
-                    {
-                        NhanVien nv = new NhanVien(); // Không cần truyền Acccount nữa
-                        this.Hide();
-                        nv.Show();
-                    }
-                    
+                    Admin adminForm = new Admin(account);
+                    this.Hide();
+                    adminForm.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Không thể tải thông tin người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    NhanVien nv = new NhanVien();
+                    this.Hide();
+                    nv.Show();
                 }
             }
             else
             {
                 MessageBox.Show("Sai tài khoản hoặc mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void checkPw_CheckedChanged(object sender, EventArgs e)
@@ -103,8 +151,8 @@ namespace ou_care
 
         private void Login_Load(object sender, EventArgs e)
         {
-            txtUsername.Text = "Admin01";
-            txtPw.Text = "Admin123";
+            txtUsername.Text = "admin1";
+            txtPw.Text = "123456";
         }
 
         private void lbQuenMK_Click(object sender, EventArgs e)
@@ -113,10 +161,20 @@ namespace ou_care
             qmk.Show();
         }
 
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
 
+        private void txtPw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick(); // Giả lập click vào nút Login
+                e.Handled = true;
+                e.SuppressKeyPress = true; // Tránh tiếng "bíp"
+            }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

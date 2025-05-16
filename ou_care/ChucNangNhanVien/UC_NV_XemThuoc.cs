@@ -115,7 +115,7 @@ namespace ou_care.ChucNangNhanVien
             dgvMedicines.RowsDefaultCellStyle.BackColor = Color.White;
             dgvMedicines.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
                 
-            dgvMedicines.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMedicines. AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMedicines.ReadOnly = true;
             dgvMedicines.AllowUserToAddRows = false;
             dgvMedicines.AllowUserToResizeRows = false;
